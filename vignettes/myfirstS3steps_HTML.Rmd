@@ -1,0 +1,37 @@
+---
+title: "Quick exploration of some basic S3 programming"
+author: "Herbert Braselmann"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{myfirstS3steps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### `print` method `print.my1stClass`
+(1) First a simple class `l` is defined, a list with two entries `x` and `y`. The default `print` function show its entries.
+```{r}
+l <- list(x=2, y=3)
+class(l) <- "my1stClass"
+print(l)
+```
+
+(2) After attaching the package, the output of `print` should change, calling the method defined in the package.
+```{r}
+library(myfirstS3steps)
+print(l)
+```
+
+### Session Info
+```{r}
+sessionInfo()
+```
+
