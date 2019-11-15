@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{myfirstS3steps}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -16,18 +18,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-### `print` method `print.my1stClass`
-(1) First a simple class `l` is defined, a list with two entries `x` and `y`. The default `print` function show its entries.
+### S3 method `print.my1stClass`
+Not so simple in R-devel 4.0.0? Here (2019-11-07 r77386) -- "Unsuffered Consequences" on macOS 10.15.1 Catalina, compared to R 3.5.1 
+
+(1) A simple list `l` is defined, containing two entries `x` and `y`, and a class attribut is assigned, matching to the S3 method. Can also be numerical vectors. The default `print` function show its entries.
 ```{r}
 l <- list(x=2, y=3)
 class(l) <- "my1stClass"
 print(l)
 ```
 
-(2) After attaching the package, the output of `print` should change, calling the method defined in the package.
+(2) After attaching the package, method `print.my1stClass` writes the sumproduct.
 ```{r}
 library(myfirstS3steps)
+print.my1stClass(l)
+```
+
+(3) In R <= 3.6.1 the output of `print` looks like in 2. when `l` is of class `my1stClass`. In R-devel 4.0.0 it falls back to `print.default` though the method appears in the list of S3 methods for print. It works well in R 4.0.0, when the method is sourced and appears in the global environment (not shown here).
+```{r}
 print(l)
+.S3methods(class = "my1stClass")
 ```
 
 ### Session Info

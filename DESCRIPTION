@@ -3,7 +3,7 @@ Type: Package
 Title: Exploration of some basic S3 programming
 Version: 0.3.5
 Author: HB
-Maintainer: Herbert Braselmann <braselm at helmholtz-muenchen.de>
+Maintainer: Herbert Braselmann <braselm@helmholtz-muenchen.de>
 Depends: R (>= 3.0.0)
 Description: For now, a method for print
 License: What license is it under?
