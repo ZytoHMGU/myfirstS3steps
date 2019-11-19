@@ -1,7 +1,7 @@
 Package: myfirstS3steps
 Type: Package
 Title: Exploration of some basic S3 programming
-Version: 0.3.5
+Version: 0.3.6
 Author: HB
 Maintainer: Herbert Braselmann <braselm@helmholtz-muenchen.de>
 Depends: R (>= 3.0.0)
